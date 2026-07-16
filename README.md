@@ -362,30 +362,6 @@ Recommended Azure services for a pet shop (Paws & Whiskers) migrating from sprea
 
 ---
 
-### Output — Azure XtremeLabs: Explore Azure Storage
-
-![Azure Lab Storage](Images/Azure/image10.png)
-
-*Azure portal lab showing storage account creation and container configuration.*
-
----
-
-### Output — Azure XtremeLabs: Clean Transform and Load Data
-
-![Azure Lab Transform](Images/Azure/image11.png)
-
-*Azure lab showing Power Query Editor used to clean and transform data in Power BI Desktop.*
-
----
-
-### Output — Azure XtremeLabs: Data Model and Relationships
-
-![Azure Lab Model](Images/Azure/image14.png)
-
-*Lab showing data model view with table relationships configured in Power BI.*
-
----
-
 ### Output — Paws and Whiskers Cloud Proposal
 
 ![Azure Proposal](Images/Azure/image20.png)
