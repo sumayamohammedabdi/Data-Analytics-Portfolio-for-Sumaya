@@ -13,8 +13,7 @@ This GitHub Pages site showcases all my projects, including screenshots, visuali
 - **[Project 3 — Power BI](#project-3--power-bi)**
 - **[Project 4 — SQL](#project-4--sql)**
 - **[Project 5 — Azure](#project-5--azure)**
-- **[Project 6 — Pandas](#project-6--pandas)**
-- **[Project 7 — Python](#project-7--python)**
+- **[Project 6 — Python](#project-7--python)**
 - **[Final Summary](#final-summary)**
 - **[Socials](#socials)**
 
@@ -37,10 +36,8 @@ Using the retail sales dataset and student grades dataset, I analysed and struct
 - Converting raw data into named Excel tables using Ctrl+T
 - Applying filters and sorting to find the best students per subject
 - Using `=SUM()` and `=AVERAGE()` to calculate totals and averages
-- Using `=MAX()` to find the highest score per student
 - Applying conditional formatting to highlight the highest and lowest averages
 - Building a pivot table from the Bike Sales dataset
-- Using the SWITCH/IF function to categorise sales volume into High, Medium, and Low
 
 ### Approach Taken
 
@@ -85,27 +82,11 @@ Imported and cleaned raw datasets, applied Excel formulas across all rows, used 
 
 ---
 
-### Output — Filter Applied: Best Students per Subject
-
-![Best Students Filter](Images/Excel/image5.png)
-
-*Filter and sort applied to show top performing students in each subject.*
-
----
-
 ### Output — Pivot Table: Bike Sales by County and Product
 
 ![Bike Sales Pivot](Images/Excel/image10.png)
 
 *Pivot table summarising bike sales volume by county and product type.*
-
----
-
-### Output — SWITCH Function: Sales Volume Category
-
-![Switch Function](Images/Excel/image11.png)
-
-*SWITCH/IF formula applied to categorise sales as High, Medium, or Low based on volume thresholds.*
 
 ---
 
@@ -143,37 +124,6 @@ Connected the dataset in Tableau, checked data types, built multiple worksheets 
 - Benchmark country performance against global averages
 - Allocate resources based on population density and gender distribution
 
----
-
-### Output — Life Expectancy by Continent
-
-![Life Expectancy Continent](Images/Tableau_PowerBI/image4.png)
-
-*Bar chart showing average life expectancy by continent using the GapminderHealth dataset.*
-
----
-
-### Output — Life Expectancy Trend Over Time
-
-![Life Expectancy Trend](Images/Tableau_PowerBI/image5.png)
-
-*Line chart showing life expectancy trends for the top 5 countries over time.*
-
----
-
-### Output — Population Distribution by Gender
-
-![Population Gender](Images/Tableau_PowerBI/image6.png)
-
-*Pie chart showing population distribution by gender for a selected country and year.*
-
----
-
-### Output — BMI vs Life Expectancy
-
-![BMI Life Expectancy](Images/Tableau_PowerBI/image7.png)
-
-*Scatter plot showing the relationship between BMI and life expectancy across countries.*
 
 ---
 
@@ -223,39 +173,6 @@ Build an interactive Power BI dashboard to analyse retail sales performance, ide
 ![Power BI Overview](Images/Tableau_PowerBI/image13.png)
 
 *Interactive overview dashboard showing KPIs, category breakdowns, and regional performance.*
-
----
-
-### Output — Profit Page
-
-![Power BI Profit](Images/Tableau_PowerBI/image14.png)
-
-*Profit analysis page showing revenue, cost, and margin trends by year and category.*
-
----
-
-### Output — My Performance Page
-
-![Power BI Performance](Images/Tableau_PowerBI/image15.png)
-
-*Individual salesperson performance page filtered by name with dynamic slicer.*
-
----
-
-### Output — Table Relationships in Model View
-
-![Power BI Relationships](Images/Tableau_PowerBI/image16.png)
-
-*Data model showing table relationships created between fact and dimension tables.*
-
----
-
-### Output — Power Query Data Cleaning
-
-![Power BI Power Query](Images/Tableau_PowerBI/image17.png)
-
-*Power Query editor showing data cleaning steps applied before loading to the model.*
-
 ---
 
 ## Project 4 — SQL
@@ -294,164 +211,25 @@ Researched database concepts including primary keys, foreign keys, entity relati
 
 ---
 
-### Output — SQL JOIN Types Research
-
-![SQL Joins](Images/SQL/image6.png)
-
-*Research task documenting all six JOIN types with diagrams and examples.*
-
----
-
 ### Output — SQL Practical Queries — Filtering
 
 ![SQL Filtering](Images/SQL/image10.png)
 
 *SQL queries using WHERE, IN, BETWEEN, and NOT BETWEEN to filter records.*
 
----
 
-### Output — SQL Practical Queries — GROUP BY and Aggregation
 
-![SQL Grouping](Images/SQL/image11.png)
 
-*SQL queries using GROUP BY, COUNT, AVG, and SUM to summarise data.*
 
----
 
-### Output — SQL CASE Statement
 
-![SQL CASE](Images/SQL/image12.png)
 
-*CASE statement used to create age brackets and performance categories in SQL.*
 
 ---
 
-### Output — SQL CREATE TABLE
 
-![SQL Create Table](Images/SQL/image23.png)
 
-*CREATE TABLE statement defining a student scoring table with correct data types.*
-
----
-
-## Project 5 — Azure
-
-[↟ Back to Table of Contents](#table-of-contents)
-
-### Problem
-
-Research and recommend a Microsoft Azure cloud migration strategy for a small business. Tasks covered cloud models, data laws, Azure services, storage formats, data modelling, and cost estimation.
-
-### Approach Taken
-
-Recommended Azure services for a pet shop (Paws & Whiskers) migrating from spreadsheets to the cloud. Designed a relational data model.
-
-### Insights
-
-- Azure SQL Database and Blob Storage together cover all structured and unstructured data needs
-- Azure Data Factory automates ETL pipelines removing the need for manual data entry
-- GDPR and DPA 2018 require data minimisation, encryption, and breach reporting within 72 hours
-- Azure UK South region satisfies UK data residency requirements for GDPR compliance
-
-### Impact
-
-- Replaces unreliable manual spreadsheets with a secure cloud database
-- Provides automated data pipelines and real-time Power BI dashboards
-- Meets GDPR, DPA 2018, and PCI DSS compliance requirements
-- Delivers a scalable architecture that grows with the business
-
----
-
-### Output — Paws and Whiskers Cloud Proposal
-
-![Azure Proposal](Images/Azure/image20.png)
-
-*Cloud migration proposal for Paws and Whiskers covering Azure services and data modelling.*
-
----
-
-## Project 6 — Pandas
-
-[↟ Back to Table of Contents](#table-of-contents)
-
-### Dataset
-
-student_in_.csv — 35 students, 5 columns (id, name, class, mark, gender)
-
-### Problem
-
-Load, explore, slice, manipulate, aggregate, and export the student dataset using Pandas in Google Colab.
-
-### Approach Taken
-
-Used `read_csv`, `head`, `info`, `describe`, `iloc`, `groupby`, `pivot_table`, `apply`, `sort_values`, and `to_csv` to fully analyse and export the dataset. Created a custom grade function and applied it across the DataFrame.
-
-### Insights
-
-- Class Six had the highest average score (82.57)
-- Class Four had the lowest average score (68.75)
-- Female students averaged slightly higher than males (77.3 vs 71.6)
-- Top student: Kenn Rein — score 96, Class Six, Female, Grade A
-- Lowest score: 18 (Class Nine)
-
-### Impact
-
-- Demonstrates a complete end-to-end Pandas workflow from loading to export
-- Pivot table and groupby outputs directly mirror Excel analysis for validation
-- Custom grade function demonstrates use of apply() for conditional column creation
-- Exported CSV is ready for database ingestion or further BI reporting
-
----
-
-### Output — DataFrame Head and Info
-
-![Pandas Head](Images/Python/image2.png)
-
-*First rows of the student DataFrame loaded from CSV, showing all columns and data types.*
-
----
-
-### Output — Groupby: Average Score per Class
-
-![Pandas Groupby](Images/Python/image4.png)
-
-*Groupby query showing average score per class — Class Six leads, Class Four lowest.*
-
----
-
-### Output — Pivot Table
-
-![Pandas Pivot](Images/Python/image9.png)
-
-*Pivot table showing average student scores broken down by class and gender.*
-
----
-
-### Output — Grade Column Applied
-
-![Pandas Grade](Images/Python/image12.png)
-
-*Custom grade function applied to the score column — A, B, C, D assigned per student.*
-
----
-
-### Output — Sorted DataFrame
-
-![Pandas Sorted](Images/Python/image18.png)
-
-*DataFrame sorted by score descending — Kenn Rein at the top with score 96.*
-
----
-
-### Output — GDP Dataset: First 10 Rows
-
-![GDP Head](Images/Python/image20.png)
-
-*First 10 rows of the GDP (nominal) per Capita dataset loaded from CSV — 223 countries.*
-
----
-
-## Project 7 — Python
+## Project 6 — Python
 
 [↟ Back to Table of Contents](#table-of-contents)
 
@@ -497,30 +275,6 @@ Wrote FizzBuzz using a for loop and modulus operator. Used `plt.figure`, `sns.ba
 ![Bar Chart](Images/Python/image23.png)
 
 *Seaborn bar chart showing average student score per class from the student dataset.*
-
----
-
-### Output — Box Plot: Score Distribution
-
-![Box Plot](Images/Python/image24.png)
-
-*Box and whisker plot showing score distribution and outliers across all classes.*
-
----
-
-### Output — GDP Dataset Analysis
-
-![GDP Analysis](Images/Python/image25.png)
-
-*Pandas analysis of the GDP dataset showing regional filtering and top 10 wealthiest countries.*
-
----
-
-### Output — GDP Bar Chart by Region
-
-![GDP Bar Chart](Images/Python/image26.png)
-
-*Bar chart showing average IMF GDP estimate per region — Europe leads, Africa lowest.*
 
 ---
 
