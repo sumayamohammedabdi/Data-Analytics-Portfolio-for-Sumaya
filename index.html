@@ -1,439 +1,637 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Sumaya Abdi | Data Analytics Portfolio</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:wght@700&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
-<title>Sumaya Abdi | Data Analytics Portfolio</title>
+    :root {
+      --bg:      #0d1117;
+      --surface: #161b22;
+      --card:    #1c2330;
+      --border:  #30363d;
+      --accent:  #58a6ff;
+      --green:   #3fb950;
+      --text:    #e6edf3;
+      --muted:   #8b949e;
+      --tag-bg:  #21262d;
+    }
 
-<style>
+    html { scroll-behavior: smooth; }
 
-*{
-margin:0;
-padding:0;
-box-sizing:border-box;
-}
+    body {
+      font-family: 'Inter', sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.7;
+      font-size: 15px;
+    }
 
-body{
-font-family:Arial, sans-serif;
-line-height:1.6;
-background:#f5f7fa;
-color:#333;
-}
+    /* NAV */
+    nav {
+      position: sticky; top: 0; z-index: 100;
+      background: rgba(13,17,23,0.93);
+      backdrop-filter: blur(10px);
+      border-bottom: 1px solid var(--border);
+      padding: 0 48px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      height: 58px;
+    }
+    .nav-brand { font-weight: 700; font-size: 14px; color: var(--text); letter-spacing: 0.03em; }
+    .nav-links { display: flex; gap: 30px; list-style: none; }
+    .nav-links a { color: var(--muted); text-decoration: none; font-size: 13px; font-weight: 500; transition: color 0.2s; }
+    .nav-links a:hover { color: var(--accent); }
 
-header{
-background:#0f172a;
-color:white;
-padding:80px 20px;
-text-align:center;
-}
+    /* HERO */
+    .hero {
+      padding: 100px 48px 80px;
+      max-width: 860px;
+      margin: 0 auto;
+    }
+    .hero-eyebrow {
+      font-size: 11px; font-weight: 700; letter-spacing: 0.14em;
+      text-transform: uppercase; color: var(--green); margin-bottom: 20px;
+    }
+    .hero h1 {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(40px, 6vw, 64px);
+      line-height: 1.1; color: var(--text); margin-bottom: 24px;
+    }
+    .hero h1 span { color: var(--accent); }
+    .hero p {
+      font-size: 17px; color: var(--muted);
+      max-width: 620px; margin-bottom: 38px; line-height: 1.8;
+    }
+    .skill-tags { display: flex; flex-wrap: wrap; gap: 10px; margin-bottom: 42px; }
+    .skill-tag {
+      background: var(--tag-bg); border: 1px solid var(--border);
+      border-radius: 20px; padding: 5px 14px;
+      font-size: 12px; font-weight: 600; color: var(--muted);
+    }
+    .hero-btns { display: flex; gap: 14px; flex-wrap: wrap; }
+    .btn {
+      display: inline-block; padding: 10px 22px; border-radius: 6px;
+      font-size: 13px; font-weight: 600; text-decoration: none; transition: all 0.2s;
+    }
+    .btn-primary { background: var(--accent); color: #0d1117; }
+    .btn-primary:hover { background: #79c0ff; }
+    .btn-outline { border: 1px solid var(--border); color: var(--text); background: transparent; }
+    .btn-outline:hover { border-color: var(--accent); color: var(--accent); }
 
-header h1{
-font-size:3rem;
-margin-bottom:10px;
-}
+    /* DIVIDER */
+    .divider { width: 100%; height: 1px; background: var(--border); max-width: 1100px; margin: 0 auto; }
 
-header p{
-font-size:1.2rem;
-}
+    /* SECTION */
+    .section { padding: 80px 48px; max-width: 1100px; margin: 0 auto; }
+    .section-label {
+      font-size: 11px; font-weight: 700; letter-spacing: 0.14em;
+      text-transform: uppercase; color: var(--accent); margin-bottom: 10px;
+    }
+    .section-title {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(26px, 4vw, 38px);
+      color: var(--text); margin-bottom: 12px;
+    }
+    .section-sub { color: var(--muted); max-width: 580px; margin-bottom: 48px; font-size: 15px; }
 
-nav{
-background:#1e293b;
-padding:15px;
-text-align:center;
-position:sticky;
-top:0;
-z-index:1000;
-}
+    /* PROJECT CARD */
+    .project-card {
+      background: var(--card); border: 1px solid var(--border);
+      border-radius: 12px; overflow: hidden; margin-bottom: 36px;
+      transition: border-color 0.2s, transform 0.2s;
+    }
+    .project-card:hover { border-color: var(--accent); transform: translateY(-2px); }
 
-nav a{
-color:white;
-text-decoration:none;
-margin:0 15px;
-font-weight:bold;
-}
+    .card-header {
+      padding: 28px 32px 22px;
+      border-bottom: 1px solid var(--border);
+      display: flex; justify-content: space-between;
+      align-items: flex-start; gap: 16px; flex-wrap: wrap;
+    }
+    .project-number { font-size: 11px; font-weight: 700; color: var(--green); letter-spacing: 0.1em; margin-bottom: 6px; }
+    .project-title { font-size: 20px; font-weight: 700; color: var(--text); margin-bottom: 5px; }
+    .project-subtitle { font-size: 13px; color: var(--muted); }
+    .card-tags { display: flex; flex-wrap: wrap; gap: 8px; align-items: flex-start; }
+    .card-tag {
+      background: var(--tag-bg); border: 1px solid var(--border);
+      border-radius: 4px; padding: 3px 10px;
+      font-size: 11px; font-weight: 600; color: var(--accent);
+    }
 
-nav a:hover{
-color:#38bdf8;
-}
+    /* CARD BODY */
+    .card-body { display: grid; grid-template-columns: 1fr 1fr; }
+    .card-meta {
+      padding: 26px 32px;
+      border-right: 1px solid var(--border);
+    }
+    .card-meta:last-child { border-right: none; }
+    .meta-label {
+      font-size: 11px; font-weight: 700; letter-spacing: 0.1em;
+      text-transform: uppercase; color: var(--muted); margin-bottom: 10px;
+    }
+    .card-meta p { font-size: 14px; color: var(--muted); line-height: 1.75; }
+    .card-meta ul { list-style: none; padding: 0; }
+    .card-meta ul li {
+      font-size: 14px; color: var(--muted);
+      padding: 3px 0 3px 16px; position: relative;
+    }
+    .card-meta ul li::before {
+      content: '→'; position: absolute; left: 0;
+      color: var(--green); font-size: 11px;
+    }
 
-.container{
-max-width:1200px;
-margin:auto;
-padding:40px 20px;
-}
+    /* INSIGHTS */
+    .insights-box {
+      margin: 0 32px 28px;
+      padding: 18px 22px;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-left: 3px solid var(--green);
+      border-radius: 6px;
+    }
+    .insights-box .meta-label { margin-bottom: 10px; }
+    .insights-box ul { list-style: none; padding: 0; }
+    .insights-box ul li {
+      font-size: 13px; color: var(--muted);
+      padding: 3px 0 3px 16px; position: relative;
+    }
+    .insights-box ul li::before {
+      content: '▸'; position: absolute; left: 0;
+      color: var(--green); font-size: 10px; top: 5px;
+    }
 
-section{
-margin-bottom:70px;
-}
+    /* DASHBOARD LINK BAR */
+    .dash-embed { padding: 0 32px 28px; }
+    .dash-link-bar {
+      display: flex; align-items: center; gap: 14px;
+      padding: 14px 20px;
+      background: var(--surface); border: 1px solid var(--border);
+      border-radius: 8px;
+    }
+    .dash-dot { width: 8px; height: 8px; border-radius: 50%; background: var(--green); flex-shrink: 0; }
+    .dash-link-bar span { font-size: 13px; color: var(--muted); flex: 1; }
+    .dash-link-bar a { font-size: 12px; font-weight: 600; color: var(--accent); text-decoration: none; white-space: nowrap; }
+    .dash-link-bar a:hover { text-decoration: underline; }
 
-h2{
-margin-bottom:20px;
-color:#0f172a;
-border-bottom:3px solid #38bdf8;
-padding-bottom:10px;
-}
+    /* SCREENSHOTS */
+    .screenshots { padding: 0 32px 32px; display: grid; gap: 12px; }
+    .screenshots.cols-1 { grid-template-columns: 1fr; }
+    .screenshots.cols-2 { grid-template-columns: 1fr 1fr; }
+    .screenshots.cols-3 { grid-template-columns: 1fr 1fr 1fr; }
+    .screenshot-wrap {
+      border-radius: 8px; overflow: hidden;
+      border: 1px solid var(--border); background: var(--surface);
+    }
+    .screenshot-wrap img { width: 100%; display: block; transition: transform 0.3s; }
+    .screenshot-wrap:hover img { transform: scale(1.02); }
+    .screenshot-caption {
+      padding: 8px 12px; font-size: 11px;
+      color: var(--muted); background: var(--surface);
+      border-top: 1px solid var(--border);
+    }
 
-.card{
-background:white;
-padding:25px;
-margin-bottom:30px;
-border-radius:12px;
-box-shadow:0 4px 12px rgba(0,0,0,0.08);
-}
+    /* CONTACT */
+    .contact-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 16px; }
+    .contact-card {
+      background: var(--card); border: 1px solid var(--border);
+      border-radius: 10px; padding: 22px 24px;
+      text-decoration: none; transition: border-color 0.2s; display: block;
+    }
+    .contact-card:hover { border-color: var(--accent); }
+    .c-label { font-size: 11px; font-weight: 700; color: var(--muted); letter-spacing: 0.1em; text-transform: uppercase; margin-bottom: 6px; }
+    .c-value { font-size: 14px; color: var(--accent); font-weight: 500; }
 
-.card h3{
-margin-bottom:15px;
-color:#0f172a;
-}
+    footer {
+      border-top: 1px solid var(--border);
+      padding: 28px 48px; text-align: center;
+      color: var(--muted); font-size: 12px;
+    }
 
-img{
-width:100%;
-max-width:900px;
-display:block;
-margin:20px auto;
-border-radius:8px;
-border:1px solid #ddd;
-}
-
-.skills{
-display:flex;
-flex-wrap:wrap;
-gap:10px;
-margin-top:20px;
-}
-
-.skill{
-background:#0f172a;
-color:white;
-padding:10px 15px;
-border-radius:20px;
-font-size:14px;
-}
-
-.button{
-display:inline-block;
-background:#2563eb;
-color:white;
-padding:12px 20px;
-text-decoration:none;
-border-radius:6px;
-margin-top:15px;
-}
-
-.button:hover{
-background:#1d4ed8;
-}
-
-footer{
-background:#0f172a;
-color:white;
-text-align:center;
-padding:40px;
-}
-
-ul{
-padding-left:20px;
-margin-top:10px;
-margin-bottom:10px;
-}
-
-</style>
+    /* RESPONSIVE */
+    @media (max-width: 768px) {
+      nav { padding: 0 20px; }
+      .nav-links { gap: 16px; }
+      .hero, .section { padding-left: 20px; padding-right: 20px; }
+      .card-body { grid-template-columns: 1fr; }
+      .card-meta { border-right: none; border-bottom: 1px solid var(--border); }
+      .card-header, .card-meta { padding: 20px; }
+      .screenshots { padding: 0 20px 20px; }
+      .screenshots.cols-2, .screenshots.cols-3 { grid-template-columns: 1fr; }
+      .insights-box { margin: 0 20px 20px; }
+      .dash-embed { padding: 0 20px 20px; }
+    }
+  </style>
 </head>
-
 <body>
 
-<header>
-
-<h1>Sumaya Abdi</h1>
-
-<p>Data Analytics Portfolio</p>
-
-<p>SQL • Python • Power BI • Tableau • Excel</p>
-
-</header>
-
+<!-- NAV -->
 <nav>
-<a href="#about">About</a>
-<a href="#excel">Excel</a>
-<a href="#tableau">Tableau</a>
-<a href="#powerbi">Power BI</a>
-<a href="#sql">SQL</a>
-<a href="#python">Python</a>
-<a href="#contact">Contact</a>
+  <span class="nav-brand">Sumaya Abdi</span>
+  <ul class="nav-links">
+    <li><a href="#about">About</a></li>
+    <li><a href="#excel">Excel</a></li>
+    <li><a href="#tableau">Tableau</a></li>
+    <li><a href="#powerbi">Power BI</a></li>
+    <li><a href="#sql">SQL</a></li>
+    <li><a href="#python">Python</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
 </nav>
 
-<div class="container">
-
-<section id="about">
-
-<h2>About Me</h2>
-
-<div class="card">
-
-<p>
-I am a Data Technician Trainee with practical experience using SQL, Python,
-Excel, Tableau and Power BI to analyse datasets, create dashboards and
-generate business insights.
-</p>
-
-<br>
-
-<p>
-This portfolio showcases projects completed through coursework,
-independent study and hands-on analytical exercises. My work focuses on
-data analysis, dashboard development, SQL querying and business reporting.
-</p>
-
-<div class="skills">
-
-<div class="skill">SQL</div>
-<div class="skill">Python</div>
-<div class="skill">Power BI</div>
-<div class="skill">Tableau</div>
-<div class="skill">Excel</div>
-<div class="skill">Data Analysis</div>
-
-</div>
-
-</div>
-
+<!-- HERO -->
+<section class="hero" id="about">
+  <p class="hero-eyebrow">Data Analytics Portfolio</p>
+  <h1>Hi, I'm <span>Sumaya Abdi</span></h1>
+  <p>
+    Data Analyst based in Birmingham, UK. I build dashboards, write SQL,
+    and analyse data with Python to turn raw numbers into clear decisions.
+    This portfolio showcases projects completed across Excel, Tableau,
+    Power BI, SQL, and Python.
+  </p>
+  <div class="skill-tags">
+    <span class="skill-tag">SQL</span>
+    <span class="skill-tag">Python</span>
+    <span class="skill-tag">Power BI</span>
+    <span class="skill-tag">Tableau</span>
+    <span class="skill-tag">Excel</span>
+  </div>
+  <div class="hero-btns">
+    <a href="#excel" class="btn btn-primary">View Projects</a>
+    <a href="https://github.com/sumayamohammedabdi" class="btn btn-outline" target="_blank">GitHub</a>
+    <a href="mailto:sumayaenow@gmail.com" class="btn btn-outline">Contact Me</a>
+  </div>
 </section>
 
-<section id="excel">
+<div class="divider"></div>
 
-<h2>Excel Projects</h2>
+<!-- EXCEL -->
+<section class="section" id="excel">
+  <p class="section-label">Project 1</p>
+  <h2 class="section-title">Excel — Data Analysis &amp; Reporting</h2>
+  <p class="section-sub">Analysing retail sales and student performance datasets using Excel formulas, conditional formatting, and pivot tables.</p>
 
-<div class="card">
-
-<h3>Excel Analysis & Reporting</h3>
-
-<p><strong>Problem</strong></p>
-
-<p>
-Analyse sales and student performance datasets using Excel formulas,
-conditional formatting and Pivot Tables.
-</p>
-
-<br>
-
-<p><strong>Approach Taken</strong></p>
-
-<ul>
-<li>Converted datasets into structured Excel tables</li>
-<li>Applied sorting and filtering</li>
-<li>Used SUM and AVERAGE formulas</li>
-<li>Applied conditional formatting</li>
-<li>Created Pivot Tables from bike sales data</li>
-</ul>
-
-<p><strong>Skills Demonstrated</strong></p>
-
-<ul>
-<li>Data cleaning</li>
-<li>Excel formulas</li>
-<li>Pivot Tables</li>
-<li>Data visualisation</li>
-</ul>
-
-<img src="Images/Excel/excel.bikesales.png">
-
-<img src="Images/Excel/excel.conditionalformatting.png">
-
-<img src="Images/Excel/excel.totalsales.png">
-
-</div>
-
+  <div class="project-card">
+    <div class="card-header">
+      <div>
+        <p class="project-number">PROJECT 01 — EXCEL</p>
+        <h3 class="project-title">Retail Sales &amp; Student Performance Analysis</h3>
+        <p class="project-subtitle">Excel tables, formulas, conditional formatting, pivot tables</p>
+      </div>
+      <div class="card-tags">
+        <span class="card-tag">Excel</span>
+        <span class="card-tag">Pivot Tables</span>
+        <span class="card-tag">Conditional Formatting</span>
+        <span class="card-tag">SWITCH</span>
+      </div>
+    </div>
+    <div class="card-body">
+      <div class="card-meta">
+        <p class="meta-label">Task</p>
+        <p>Analyse retail sales and student performance datasets using Excel. Convert raw data into structured tables, apply formulas to calculate averages and highest scores, and use conditional formatting and pivot tables to surface key insights.</p>
+      </div>
+      <div class="card-meta">
+        <p class="meta-label">Approach Taken</p>
+        <ul>
+          <li>Converted datasets to named Excel tables using Ctrl+T</li>
+          <li>Applied sorting and filtering to rank students per subject</li>
+          <li>Used =AVERAGE() and =MAX() across all rows</li>
+          <li>Applied green-red conditional formatting to highlight averages</li>
+          <li>Built pivot table from Bike Sales data by county and product</li>
+          <li>Used IF/SWITCH to categorise sales as High, Medium, Low</li>
+        </ul>
+      </div>
+    </div>
+    <div class="insights-box">
+      <p class="meta-label">Key Insights</p>
+      <ul>
+        <li>Best student by average: Carol (81.67) — Linda achieved the highest individual score (90)</li>
+        <li>Cornwall and Essex led county sales at 1100 — categorised as High</li>
+        <li>Class Six returned the strongest class average in the Bike Sales analysis</li>
+        <li>Conditional formatting made top and bottom performers immediately visible</li>
+      </ul>
+    </div>
+    <div class="screenshots cols-2">
+      <div class="screenshot-wrap">
+        <img src="Images/Excel/excel.totalsales.png" alt="Total Sales" />
+        <div class="screenshot-caption">Retail sales dataset with SUM and AVERAGE formulas applied</div>
+      </div>
+      <div class="screenshot-wrap">
+        <img src="Images/Excel/excel.conditionalformatting.png" alt="Conditional Formatting" />
+        <div class="screenshot-caption">Conditional formatting highlighting highest and lowest averages</div>
+      </div>
+      <div class="screenshot-wrap">
+        <img src="Images/Excel/excel.bikesales.png" alt="Bike Sales Pivot" />
+        <div class="screenshot-caption">Pivot table summarising bike sales by county and product</div>
+      </div>
+      <div class="screenshot-wrap">
+        <img src="Images/Excel/excel_dashboard.png" alt="Excel Dashboard" />
+        <div class="screenshot-caption">Final Excel dashboard combining all analysis</div>
+      </div>
+    </div>
+  </div>
 </section>
 
-<section id="tableau">
+<div class="divider"></div>
 
-<h2>Tableau Dashboard</h2>
+<!-- TABLEAU -->
+<section class="section" id="tableau">
+  <p class="section-label">Project 2</p>
+  <h2 class="section-title">Tableau — Global Health Insights Dashboard</h2>
+  <p class="section-sub">Interactive Tableau dashboard exploring life expectancy, BMI, and population trends across continents and countries.</p>
 
-<div class="card">
-
-<h3>Global Health Insights Dashboard</h3>
-
-<p>
-Interactive Tableau dashboard analysing global health metrics,
-population trends and life expectancy.
-</p>
-
-<a class="button"
-href="https://public.tableau.com/app/profile/sumaya.abdi8213/viz/Book2_17841561567620/Dashboard1?publish=yes"
-target="_blank">
-
-View Tableau Dashboard
-
-</a>
-
-<img src="Images/Tableau_PowerBI/powerbi_dashboard_1.png">
-
-</div>
-
+  <div class="project-card">
+    <div class="card-header">
+      <div>
+        <p class="project-number">PROJECT 02 — TABLEAU</p>
+        <h3 class="project-title">Global Health Insights Dashboard</h3>
+        <p class="project-subtitle">GapminderHealth dataset — 158 countries</p>
+      </div>
+      <div class="card-tags">
+        <span class="card-tag">Tableau</span>
+        <span class="card-tag">Dashboard</span>
+        <span class="card-tag">Line Chart</span>
+        <span class="card-tag">Scatter Plot</span>
+        <span class="card-tag">Map</span>
+      </div>
+    </div>
+    <div class="card-body">
+      <div class="card-meta">
+        <p class="meta-label">Task</p>
+        <p>Build an interactive Tableau dashboard showing life expectancy by continent, life expectancy trends over time, BMI correlations, and population distribution by country and gender — all in one connected dashboard.</p>
+      </div>
+      <div class="card-meta">
+        <p class="meta-label">Approach Taken</p>
+        <ul>
+          <li>Built bar chart for life expectancy by continent</li>
+          <li>Built line chart filtered to 5 top countries from 1985–2006</li>
+          <li>Created scatter plot comparing BMI vs life expectancy</li>
+          <li>Built population map with sized and coloured circles</li>
+          <li>Added pie chart for gender distribution with filters</li>
+          <li>Combined all sheets into one interactive dashboard</li>
+        </ul>
+      </div>
+    </div>
+    <div class="insights-box">
+      <p class="meta-label">Key Insights</p>
+      <ul>
+        <li>Oceania and Europe have the highest average life expectancy — Africa the lowest</li>
+        <li>Japan shows the steepest life expectancy growth from 1985 to 2006</li>
+        <li>Countries with BMI values between 800–1000 cluster around the highest life expectancy</li>
+        <li>Population distribution is broadly equal between men and women globally</li>
+      </ul>
+    </div>
+    <div class="dash-embed">
+      <div class="dash-link-bar">
+        <div class="dash-dot"></div>
+        <span>Live interactive dashboard — published on Tableau Public</span>
+        <a href="https://public.tableau.com/app/profile/sumaya.abdi8213/viz/Book2_17841561567620/Dashboard1?publish=yes" target="_blank">View Live Dashboard →</a>
+      </div>
+    </div>
+    <div class="screenshots cols-1">
+      <div class="screenshot-wrap">
+        <img src="Images/Tableau_PowerBI/powerbi_dashboard_1.png" alt="Tableau Dashboard" />
+        <div class="screenshot-caption">Global Health Insights — full interactive Tableau dashboard</div>
+      </div>
+    </div>
+  </div>
 </section>
 
-<section id="powerbi">
+<div class="divider"></div>
 
-<h2>Power BI Dashboard</h2>
+<!-- POWER BI -->
+<section class="section" id="powerbi">
+  <p class="section-label">Project 3</p>
+  <h2 class="section-title">Power BI — Sales Performance Dashboard</h2>
+  <p class="section-sub">Interactive multi-page Power BI dashboard analysing retail sales with dynamic slicers, KPI cards, and regional breakdowns.</p>
 
-<div class="card">
-
-<h3>Retail Sales Dashboard</h3>
-
-<p>
-Built an interactive Power BI dashboard featuring KPI cards,
-sales analysis, filtering and performance tracking.
-</p>
-
-<p>
-If your Power BI report becomes publicly available,
-replace the button link below with the public URL.
-</p>
-
-<a class="button"
-href="https://app.powerbi.com/groups/me/reports/a34a8578-5635-4488-828d-f67e91a40caf/53faaf23d9ecac9b1208?experience=power-bi"
-target="_blank">
-
-View Power BI Dashboard
-
-</a>
-
-<img src="Images/Tableau_PowerBI/powerbi_dashboard_2.png">
-
-</div>
-
+  <div class="project-card">
+    <div class="card-header">
+      <div>
+        <p class="project-number">PROJECT 03 — POWER BI</p>
+        <h3 class="project-title">Retail Sales Performance Dashboard</h3>
+        <p class="project-subtitle">Multi-page report — Overview, Profit, and My Performance</p>
+      </div>
+      <div class="card-tags">
+        <span class="card-tag">Power BI</span>
+        <span class="card-tag">Power Query</span>
+        <span class="card-tag">DAX</span>
+        <span class="card-tag">Slicers</span>
+      </div>
+    </div>
+    <div class="card-body">
+      <div class="card-meta">
+        <p class="meta-label">Task</p>
+        <p>Build an interactive Power BI dashboard to analyse retail sales performance across categories, regions, and time periods — enabling management to identify trends and drill into individual salesperson performance using dynamic slicers.</p>
+      </div>
+      <div class="card-meta">
+        <p class="meta-label">Approach Taken</p>
+        <ul>
+          <li>Loaded and cleaned data in Power Query Editor</li>
+          <li>Created table relationships using primary and foreign keys</li>
+          <li>Built KPI cards, bar charts, line charts, and pie charts</li>
+          <li>Added Year and Salesperson slicers connected to all visuals</li>
+          <li>Designed three-page report: Overview, Profit, My Performance</li>
+          <li>Published to Power BI Public Service</li>
+        </ul>
+      </div>
+    </div>
+    <div class="insights-box">
+      <p class="meta-label">Key Insights</p>
+      <ul>
+        <li>Clear differences in category performance visible across all product lines</li>
+        <li>Regional breakdowns highlight strengths and improvement areas instantly</li>
+        <li>Year slicer enables rapid year-on-year comparison with one click</li>
+        <li>Individual salesperson performance varies significantly across the team</li>
+      </ul>
+    </div>
+    <div class="dash-embed">
+      <div class="dash-link-bar">
+        <div class="dash-dot"></div>
+        <span>Live interactive dashboard — published to Power BI Service</span>
+        <a href="https://app.powerbi.com/groups/me/reports/a34a8578-5635-4488-828d-f67e91a40caf/53faaf23d9ecac9b1208?experience=power-bi" target="_blank">View Live Dashboard →</a>
+      </div>
+    </div>
+    <div class="screenshots cols-1">
+      <div class="screenshot-wrap">
+        <img src="Images/Tableau_PowerBI/powerbi_dashboard_2.png" alt="Power BI Dashboard" />
+        <div class="screenshot-caption">Sales Performance Dashboard — interactive Power BI report</div>
+      </div>
+    </div>
+  </div>
 </section>
 
-<section id="sql">
+<div class="divider"></div>
 
-<h2>SQL Projects</h2>
+<!-- SQL -->
+<section class="section" id="sql">
+  <p class="section-label">Project 4</p>
+  <h2 class="section-title">SQL — Database Querying &amp; Analysis</h2>
+  <p class="section-sub">Writing SQL queries to filter, aggregate, join, and categorise data from relational databases.</p>
 
-<div class="card">
-
-<h3>SQL Querying & Database Analysis</h3>
-
-<p><strong>Problem</strong></p>
-
-<p>
-Use SQL to retrieve, filter, sort and combine information from
-relational databases.
-</p>
-
-<br>
-
-<p><strong>Approach Taken</strong></p>
-
-<ul>
-<li>Used WHERE clauses for filtering</li>
-<li>Applied ORDER BY to sort results</li>
-<li>Used BETWEEN to retrieve values within ranges</li>
-<li>Used JOIN statements to combine tables</li>
-</ul>
-
-<p><strong>Skills Demonstrated</strong></p>
-
-<ul>
-<li>Data filtering</li>
-<li>Sorting and ranking</li>
-<li>Relational database querying</li>
-<li>Joining datasets</li>
-</ul>
-
-<img src="Images/SQL/sql_world_query_1.png">
-
-<p>WHERE clause example.</p>
-
-<img src="Images/SQL/sql_world_query_2.png">
-
-<p>ORDER BY query example.</p>
-
-<img src="Images/SQL/sql_world_query_3.png">
-
-<p>BETWEEN query example.</p>
-
-<img src="Images/SQL/sql_world_query_4.png">
-
-<p>JOIN query example.</p>
-
-</div>
-
+  <div class="project-card">
+    <div class="card-header">
+      <div>
+        <p class="project-number">PROJECT 04 — SQL</p>
+        <h3 class="project-title">Relational Database Design &amp; SQL Querying</h3>
+        <p class="project-subtitle">WHERE, JOIN, GROUP BY, ORDER BY, CASE statements</p>
+      </div>
+      <div class="card-tags">
+        <span class="card-tag">SQL</span>
+        <span class="card-tag">JOIN</span>
+        <span class="card-tag">GROUP BY</span>
+        <span class="card-tag">CASE</span>
+        <span class="card-tag">Filtering</span>
+      </div>
+    </div>
+    <div class="card-body">
+      <div class="card-meta">
+        <p class="meta-label">Task</p>
+        <p>Write SQL queries to retrieve, filter, sort, and combine data from relational databases. Demonstrate understanding of primary keys, foreign keys, JOIN types, and aggregation functions.</p>
+      </div>
+      <div class="card-meta">
+        <p class="meta-label">Approach Taken</p>
+        <ul>
+          <li>Used WHERE clauses for targeted filtering</li>
+          <li>Applied ORDER BY to sort query results</li>
+          <li>Used BETWEEN to retrieve values within ranges</li>
+          <li>Used JOIN statements to combine related tables</li>
+          <li>Used GROUP BY with COUNT, AVG, and SUM</li>
+          <li>Wrote CASE statements to create conditional categories</li>
+        </ul>
+      </div>
+    </div>
+    <div class="insights-box">
+      <p class="meta-label">Key Insights</p>
+      <ul>
+        <li>IN operator is cleaner than multiple OR conditions when filtering multiple values</li>
+        <li>CASE statements replicate Excel IF logic directly inside SQL queries</li>
+        <li>GROUP BY with AVG and COUNT enables instant aggregated business reporting</li>
+        <li>Understanding primary and foreign keys is what makes JOINs return correct results</li>
+      </ul>
+    </div>
+    <div class="screenshots cols-2">
+      <div class="screenshot-wrap">
+        <img src="Images/SQL/sql_world_query_1.png" alt="SQL Query 1" />
+        <div class="screenshot-caption">WHERE clause filtering query</div>
+      </div>
+      <div class="screenshot-wrap">
+        <img src="Images/SQL/sql_world_query_2.png" alt="SQL Query 2" />
+        <div class="screenshot-caption">ORDER BY sorting query</div>
+      </div>
+      <div class="screenshot-wrap">
+        <img src="Images/SQL/sql_world_query_3.png" alt="SQL Query 3" />
+        <div class="screenshot-caption">BETWEEN range filtering query</div>
+      </div>
+      <div class="screenshot-wrap">
+        <img src="Images/SQL/sql_world_query_4.png" alt="SQL Query 4" />
+        <div class="screenshot-caption">JOIN query combining related tables</div>
+      </div>
+    </div>
+  </div>
 </section>
 
-<section id="python">
+<div class="divider"></div>
 
-<h2>Python Projects</h2>
+<!-- PYTHON -->
+<section class="section" id="python">
+  <p class="section-label">Project 5</p>
+  <h2 class="section-title">Python — Data Analysis &amp; Visualisation</h2>
+  <p class="section-sub">Loading, exploring, and visualising datasets using Python and Pandas in Google Colab.</p>
 
-<div class="card">
-
-<h3>Python Data Analysis</h3>
-
-<p><strong>Problem</strong></p>
-
-<p>
-Explore datasets using Python and perform data inspection and
-visualisation.
-</p>
-
-<br>
-
-<p><strong>Approach Taken</strong></p>
-
-<ul>
-<li>Loaded datasets into Python</li>
-<li>Used head() to inspect records</li>
-<li>Used tail() to inspect records</li>
-<li>Created visualisations to identify trends</li>
-</ul>
-
-<p><strong>Skills Demonstrated</strong></p>
-
-<ul>
-<li>Python fundamentals</li>
-<li>Dataset exploration</li>
-<li>Data visualisation</li>
-<li>Analytical thinking</li>
-</ul>
-
-<img src="Images/Python/python.work.png">
-
-<img src="Images/Python/python_work2.png">
-
-<img src="Images/Python/python_work3.png">
-
-<img src="Images/Python/python.work.barchart.png">
-
-</div>
-
+  <div class="project-card">
+    <div class="card-header">
+      <div>
+        <p class="project-number">PROJECT 05 — PYTHON</p>
+        <h3 class="project-title">Dataset Exploration &amp; Visualisation</h3>
+        <p class="project-subtitle">Pandas, Matplotlib, Seaborn — Google Colab</p>
+      </div>
+      <div class="card-tags">
+        <span class="card-tag">Python</span>
+        <span class="card-tag">Pandas</span>
+        <span class="card-tag">Matplotlib</span>
+        <span class="card-tag">Seaborn</span>
+      </div>
+    </div>
+    <div class="card-body">
+      <div class="card-meta">
+        <p class="meta-label">Task</p>
+        <p>Load datasets into Python, inspect records using head() and tail(), perform data exploration and manipulation, and create visualisations to identify trends and communicate findings clearly.</p>
+      </div>
+      <div class="card-meta">
+        <p class="meta-label">Approach Taken</p>
+        <ul>
+          <li>Loaded CSV datasets using Pandas read_csv</li>
+          <li>Used head() and tail() to inspect records</li>
+          <li>Applied groupby and pivot_table for aggregation</li>
+          <li>Created bar charts and visualisations using Matplotlib and Seaborn</li>
+          <li>Interpreted outputs and summarised key findings</li>
+        </ul>
+      </div>
+    </div>
+    <div class="insights-box">
+      <p class="meta-label">Key Insights</p>
+      <ul>
+        <li>Class Six had the highest average score — Class Nine the lowest with a significant outlier at 18</li>
+        <li>Female students averaged slightly higher than males across the dataset</li>
+        <li>Bar charts made class performance differences immediately clear and communicable</li>
+        <li>Groupby and pivot tables in Python replicate Excel analysis but at far greater scale</li>
+      </ul>
+    </div>
+    <div class="screenshots cols-2">
+      <div class="screenshot-wrap">
+        <img src="Images/Python/python.work.png" alt="Python Work 1" />
+        <div class="screenshot-caption">Dataset loaded and inspected in Google Colab</div>
+      </div>
+      <div class="screenshot-wrap">
+        <img src="Images/Python/python.work2.png" alt="Python Work 2" />
+        <div class="screenshot-caption">Data exploration and groupby aggregation</div>
+      </div>
+      <div class="screenshot-wrap">
+        <img src="Images/Python/python.work3.png" alt="Python Work 3" />
+        <div class="screenshot-caption">Pivot table and sorting outputs</div>
+      </div>
+      <div class="screenshot-wrap">
+        <img src="Images/Python/python.work.barchart.png" alt="Python Bar Chart" />
+        <div class="screenshot-caption">Bar chart visualisation — average score by class</div>
+      </div>
+    </div>
+  </div>
 </section>
 
-<section id="contact">
+<div class="divider"></div>
 
-<h2>Contact</h2>
-
-<div class="card">
-
-<p><strong>Email:</strong> sumayaenow@gmail.com</p>
-
-<br>
-
-<p>
-<strong>GitHub:</strong>
-<a href="https://github.com/sumayamohammedabdi" target="_blank">
-github.com/sumayamohammedabdi
-</a>
-</p>
-
-</div>
-
+<!-- CONTACT -->
+<section class="section" id="contact">
+  <p class="section-label">Get In Touch</p>
+  <h2 class="section-title">Contact</h2>
+  <p class="section-sub">Open to junior data analyst roles and opportunities. Feel free to reach out.</p>
+  <div class="contact-grid">
+    <a class="contact-card" href="mailto:sumayaenow@gmail.com">
+      <p class="c-label">Email</p>
+      <p class="c-value">sumayaenow@gmail.com</p>
+    </a>
+    <a class="contact-card" href="https://github.com/sumayamohammedabdi" target="_blank">
+      <p class="c-label">GitHub</p>
+      <p class="c-value">github.com/sumayamohammedabdi</p>
+    </a>
+    <a class="contact-card" href="https://www.linkedin.com/in/sumaya-abdi" target="_blank">
+      <p class="c-label">LinkedIn</p>
+      <p class="c-value">linkedin.com/in/sumaya-abdi</p>
+    </a>
+    <div class="contact-card">
+      <p class="c-label">Location</p>
+      <p class="c-value">Birmingham, UK</p>
+    </div>
+  </div>
 </section>
-
-</div>
 
 <footer>
-
-<p>Portfolio by Sumaya Abdi</p>
-
+  <p>Portfolio by Sumaya Abdi &nbsp;·&nbsp; Birmingham, UK &nbsp;·&nbsp; Built with GitHub Pages</p>
 </footer>
 
 </body>
